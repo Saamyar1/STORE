@@ -1,0 +1,15 @@
+@startuml buying_products_tabs
+
+!define Actor customer
+!define Actor system
+
+actor Customer as Customer
+actor System as System
+
+Customer -> System: Browse Through Tabs
+System -> Customer: Display Tab Content
+Customer -> System: Find Desired Product
+Customer -> System: Add Product to Cart
+System -> Customer: Notify Product Added to Cart
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml user_registration
+
+!define Actor customer
+!define Actor system
+
+actor Customer as Customer
+actor System as System
+
+Customer -> System: Request Registration
+System -> Customer: Prompt for Registration Details
+Customer -> System: Provide Registration Details
+System -> System: Validate Registration Details
+System -> Customer: Notify Registration Success
+System -> System: Create Account
+System -> System: Grant Access to Personalized Features
+
+@enduml

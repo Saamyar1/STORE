@@ -1,0 +1,23 @@
+@startuml product_search_and_purchase
+
+!define Actor customer
+!define Actor system
+!define Actor payment_handler
+
+actor Customer as Customer
+actor System as System
+actor "Payment handler" as PaymentHandler
+
+Customer -> System: Search for Products
+System -> Customer: Display Search Results
+Customer -> System: Add Item to Cart
+Customer -> System: Proceed to Checkout
+System -> Customer: Prompt for Login
+Customer -> System: Provide Login Credentials
+System -> System: Validate Login Credentials
+System -> PaymentHandler: Process Payment
+PaymentHandler -> System: Confirm Payment
+System -> System: Complete Purchase
+System -> Customer: Notify Purchase Completion
+
+@enduml

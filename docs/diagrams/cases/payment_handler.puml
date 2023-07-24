@@ -1,0 +1,12 @@
+@startuml payment_handler
+
+!define Actor payment_handler
+
+actor "Payment handler" as PaymentHandler
+actor Customer as Customer
+participant System as System
+
+PaymentHandler -> Customer: Check out and Payment
+PaymentHandler -> System: Check out and Payment
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml system
+
+!define Actor system
+
+actor System as System
+actor Customer as Customer
+participant "Payment handler" as PaymentHandler
+
+System -> Customer: User Registration and Account Creation
+System -> Customer: Product Search and Purchase
+System -> Customer: Check out and Payment
+System -> Customer: Buying Products - Navigating Different Tabs to Find Products to Purchase
+System -> Customer: Advertisement
+System -> Customer: Product Review
+System -> PaymentHandler: Check out and Payment
+
+@enduml

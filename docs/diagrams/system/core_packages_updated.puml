@@ -1,0 +1,24 @@
+@startuml packages
+set namespaceSeparator none
+package "core" as core #aliceblue {
+}
+package "core.contact" as core.contact #aliceblue {
+}
+package "core.feedback" as core.feedback #aliceblue {
+}
+package "core.membership" as core.membership #aliceblue {
+}
+package "core.notification" as core.notification #aliceblue {
+}
+package "core.payments" as core.payments #aliceblue {
+}
+package "core.product" as core.product #aliceblue {
+}
+package "core.rewards" as core.rewards #aliceblue {
+}
+package "core.session" as core.session #aliceblue {
+}
+package "core.utils" as core.utils #aliceblue {
+}
+core.session --> core.utils
+@enduml

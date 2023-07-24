@@ -1,0 +1,13 @@
+@startuml product_review
+
+!define Actor customer
+!define Actor system
+
+actor Customer as Customer
+actor System as System
+
+Customer -> System: Submit Product Review
+System -> System: Process Review
+System -> Customer: Notify Review Submission
+
+@enduml

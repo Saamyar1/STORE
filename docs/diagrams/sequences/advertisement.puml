@@ -1,0 +1,12 @@
+@startuml advertisement
+
+!define Actor customer
+!define Actor system
+
+actor Customer as Customer
+actor System as System
+
+Customer -> System: Browsing the Platform
+System -> Customer: Display Advertisements
+
+@enduml

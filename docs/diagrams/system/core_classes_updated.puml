@@ -1,0 +1,63 @@
+@startuml classes
+set namespaceSeparator none
+class "Inventory" as core.product.Inventory #aliceblue {
+  products : dict
+  add_all_all_stock_stock(name, stock)
+  add_all_stock_stock(name, stock)
+  add_product(product)
+  add_product_stock(name, stock)
+  get_all_all_stock()
+  get_all_all_stock_names()
+  get_all_all_stock_prices()
+  get_all_all_stock_stock(name)
+  get_all_all_stock_stocks()
+  get_all_low_stock()
+  get_all_out_of_stock()
+  get_all_products()
+  get_all_stock()
+  get_all_stock_names()
+  get_all_stock_prices()
+  get_all_stock_stock(name)
+  get_all_stock_stocks()
+  get_low_stock()
+  get_out_of_stock()
+  get_product(name)
+  get_product_names()
+  get_product_prices()
+  get_product_stock(name)
+  get_product_stocks()
+  remove_all_all_stock_stock(name, stock)
+  remove_all_stock_stock(name, stock)
+  remove_product(name)
+  remove_product_stock(name, stock)
+  set_all_all_stock_stock(name, stock)
+  set_all_stock_stock(name, stock)
+  set_product_stock(name, stock)
+}
+class "Product" as core.product.Product #aliceblue {
+  name
+  price
+  stock
+}
+class "Sessions" as core.session.Sessions #aliceblue {
+  sessions : dict
+  add_new_session(username: str, db: Database) -> None
+  get_all_sessions() -> dict
+  get_session(username: str) -> UserSession
+  remove_session(username: str) -> None
+}
+class "UserSession" as core.session.UserSession #aliceblue {
+  cart : dict
+  date : datetime, NoneType
+  db : Database
+  total_cost : int
+  username : str
+  add_new_item(id: str, name: str, price: int, quantity: int, discount: float, tax_rate: float) -> None
+  empty_cart() -> dict
+  is_item_in_cart(id: str) -> bool
+  remove_item(id: str) -> None
+  submit_cart() -> None
+  update_item_quantity(id: str, change_to_quantity: int) -> None
+  update_total_cost() -> None
+}
+@enduml
