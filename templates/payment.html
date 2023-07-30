@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center" id="payment_page">
+    <div class="col-md-6">
+        <h3 class="text-center">Payment Information</h3>
+        <hr>
+        <form action="/process_payment" method="post">
+            <div class="form-group">
+                <label for="card_name">Cardholder Name</label>
+                <input type="text" class="form-control" id="card_name" name="card_name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="card_number">Card Number</label>
+                <input type="text" class="form-control" id="card_number" name="card_number" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="expiration_date">Expiration Date</label>
+                    <input type="text" class="form-control" id="expiration_date" name="expiration_date" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

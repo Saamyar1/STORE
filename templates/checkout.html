@@ -7,8 +7,40 @@
         <h3>Your Order</h3>
         <hr>
         <div class="row">
-            <p>{{ total_cost }} </p>
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Price (per item)</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item_name, item_info in order.items() %}
+                        <tr>
+                            <td>{{ item_name }}</td>
+                            <td>{{ item_info.quantity }}</td>
+                            <td>${{ item_info.price_per_item }}</td>
+                            <td>${{ item_info.total_price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Total Cost: ${{ total_cost }}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/payment" class="btn btn-primary">Checkout</a>
+            </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
