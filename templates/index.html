@@ -5,6 +5,9 @@
     <div class="col-md-12" id="index_buttons">
         <a href="/login" class="btn btn-primary" id="login_button">Login</a>
         <a href="/register" class="btn btn-primary" id="register_button">Register</a>
+        {% if logged_in %}
+        <a href="/contact" class="btn btn-primary" id="contact_button">Contact</a>
+        {% endif %}
     </div>
 </div>
 
@@ -27,6 +30,13 @@
                                         <p class="product_card-price">${{ product.price }}</p>
                                     </div>
                                 </div>
+                                {% for review in product.reviews %}
+                                <div class="review">
+                                    <p>Rating: {{ review.rating }}/5</p>
+                                    <p>Comment: {{ review.comment }}</p>
+                                </div>
+                                {% endfor %}
+
                             </div>
                         </div>
                         {% endfor %}

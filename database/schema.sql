@@ -28,3 +28,20 @@ CREATE TABLE sales (
     FOREIGN KEY (item_id) REFERENCES inventory(id)
 );
 
+CREATE TABLE product_reviews (
+    review_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    item_id INTEGER NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    review_text TEXT NOT NULL,
+    review_date DATETIME NOT NULL,
+    FOREIGN KEY (item_id) REFERENCES inventory(id),
+    FOREIGN KEY (username) REFERENCES users(username)
+);
+
+CREATE TABLE rewards (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    reward_name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    points_required INTEGER NOT NULL,
+    image_url TEXT
+);

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row" id="rewards_page">
+    <div class="col-md-12">
+        <h3>Rewards</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <div id="1">
+                    <div class="card">
+                        <img src="/path/to/soccer_jersey.jpg" class="card-img-top" alt="Soccer Jersey">
+                        <div class="card-body">
+                            <h5 class="card-title">Soccer Jersey</h5>
+                            <p class="card-text">Official soccer jersey of your favorite team.</p>
+                            <p class="card-points">Points Required: 200</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="2">
+                    <div class="card">
+                        <img src="/path/to/soccer_boots.jpg" class="card-img-top" alt="Soccer Boots">
+                        <div class="card-body">
+                            <h5 class="card-title">Soccer Boots</h5>
+                            <p class="card-text">High-quality soccer boots for optimal performance.</p>
+                            <p class="card-points">Points Required: 250</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="3">
+                    <div class="card">
+                        <img src="/path/to/soccer_ball.jpg" class="card-img-top" alt="Soccer Ball">
+                        <div class="card-body">
+                            <h5 class="card-title">Soccer Ball</h5>
+                            <p class="card-text">Premium soccer ball for excellent gameplay.</p>
+                            <p class="card-points">Points Required: 100</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="redeem_buttons">
+            <button type="submit" class="btn btn-primary" id="redeem_button">Redeem</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

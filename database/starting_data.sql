@@ -19,6 +19,15 @@ VALUES ('Bananas', 'A long curved fruit which grows in clusters and has soft pul
 INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
 VALUES ('Mangos', 'The best fruit on the planet.', 4.00, 100, 'static/images/mango.jpeg', 'Fruit');
 
+INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
+VALUES ('Apples', 'An edible cultivation of the Malus genus.', 2.00, 100, 'static/images/apple.jpeg', 'Fruit');
+
+INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
+VALUES ('Bananas', 'A long curved fruit which grows in clusters and has soft pulpy flesh and yellow skin when ripe.', 1.00, 100, 'static/images/banana.jpeg', 'Fruit');
+
+INSERT into `inventory` (`item_name`, `info`, `price`, `stock`, `image_url`, `category`)
+VALUES ('Mangos', 'The best fruit on the planet.', 4.00, 100, 'static/images/mango.jpeg', 'Fruit');
+
 INSERT into `sales` (`transaction_id`, `username`, `item_id`, `quantity`, `sale_date`, `cost`)
 VALUES ('1', 'aturing', '1', 10, '2022-12-21 7:30:30', 5.50);
 
@@ -27,3 +36,11 @@ VALUES ('2', 'dritchie', '2', 10, '2022-12-21 7:30:30', 5.50);
 
 INSERT into `sales` (`transaction_id`, `username`, `item_id`, `quantity`, `sale_date`, `cost`)
 VALUES ('3', 'llamport', '3', 10, '2022-12-21 7:30:30', 5.50);
+
+INSERT INTO product_reviews (item_id, username, review_text, review_date)
+VALUES (1, 'user1', 'This product is amazing!', '2023-07-30 12:00:00'),
+
+
+INSERT INTO rewards (reward_name, description, points_required, image_url)
+VALUES ('10% Discount Coupon', 'Get a 10% discount on your next purchase.', 100, 'https://example.com/reward1.png'),
+       ('Free Shipping', 'Redeem this reward for free shipping on your order.', 150, 'https://example.com/reward2.png');

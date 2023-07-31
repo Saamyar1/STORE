@@ -719,3 +719,261 @@ class Database:
         self.cursor.execute(
             "UPDATE sales SET cost = ? WHERE id = ?", (new_cost, sale_id))
         self.connection.commit()
+
+    # -------------------------------------------- 
+
+    def get_product_by_id(self, product_id: int):
+        """
+        Gets a product by its ID from the database.
+
+        args:
+            - product_id: The ID of the product to get.
+
+        returns:
+            - The product with the given ID.
+        """
+        self.cursor.execute("SELECT * FROM inventory WHERE id = ?", (product_id,))
+        return self.cursor.fetchone()
+
+    # --------------------------------------------
+    # --------------- PRODUCT REVIEWS -------------
+    # --------------------------------------------
+
+    def insert_new_review(self, product_id: int, username: str, review_text: str, rating: int, review_date: dt.date) -> None:
+        """
+        Inserts a new review into the database for a specific product.
+
+        args:
+            - product_id: The id of the product for which the review is being inserted.
+            - username: The username of the user who wrote the review.
+            - review_text: The text of the review.
+            - rating: The rating given by the user (e.g., on a scale of 1 to 5).
+            - review_date: The date of the review.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "INSERT INTO product_reviews (product_id, username, review_text, rating, review_date) VALUES (?, ?, ?, ?, ?)",
+            (product_id, username, review_text, rating, review_date)
+        )
+        self.connection.commit()
+
+    # ------ Getter methods ------
+
+    def get_reviews_by_product_id(self, product_id: int):
+        """
+        Gets all reviews for a product from the database.
+
+        args:
+            - product_id: The id of the product whose reviews to get.
+
+        returns:
+            - A list of all reviews for the product with the given id.
+        """
+        self.cursor.execute(
+            "SELECT * FROM product_reviews WHERE product_id = ?", (product_id,))
+        return self.cursor.fetchall()
+
+    def get_reviews_by_username(self, username: str):
+        """
+        Gets all reviews written by a user from the database.
+
+        args:
+            - username: The username of the user whose reviews to get.
+
+        returns:
+            - A list of all reviews written by the user with the given username.
+        """
+        self.cursor.execute(
+            "SELECT * FROM product_reviews WHERE username = ?", (username,))
+        return self.cursor.fetchall()
+
+    # ------ Setter methods ------
+
+    def update_review_text(self, review_id: int, new_review_text: str):
+        """
+        Updates the text of a review in the database.
+
+        args:
+            - review_id: The id of the review to update.
+            - new_review_text: The new text of the review.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "UPDATE product_reviews SET review_text = ? WHERE review_id = ?", (new_review_text, review_id))
+        self.connection.commit()
+
+    def update_review_rating(self, review_id: int, new_rating: int):
+        """
+        Updates the rating of a review in the database.
+
+        args:
+            - review_id: The id of the review to update.
+            - new_rating: The new rating of the review.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "UPDATE product_reviews SET rating = ? WHERE review_id = ?", (new_rating, review_id))
+        self.connection.commit()
+
+    def update_review_date(self, review_id: int, new_review_date: dt.date):
+        """
+        Updates the date of a review in the database.
+
+        args:
+            - review_id: The id of the review to update.
+            - new_review_date: The new date of the review.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "UPDATE product_reviews SET review_date = ? WHERE review_id = ?", (new_review_date, review_id))
+        self.connection.commit()
+
+    def delete_review(self, review_id: int):
+        """
+        Deletes a review from the database.
+
+        args:
+            - review_id: The id of the review to delete.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "DELETE FROM product_reviews WHERE review_id = ?", (review_id,))
+        self.connection.commit()
+
+
+    # --------------------------------------------
+    # ----------------- REWARDS ------------------
+    # --------------------------------------------
+
+    def insert_new_reward(self, reward_name: str, description: str, points_required: int, image_url: str) -> None:
+        """
+        Inserts a new reward into the database.
+
+        args:
+            - reward_name: The name of the reward.
+            - description: A description of the reward.
+            - points_required: The number of points required to redeem the reward.
+            - image_url: The URL of the reward image.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "INSERT INTO rewards (reward_name, description, points_required, image_url) VALUES (?, ?, ?, ?)",
+            (reward_name, description, points_required, image_url)
+        )
+        self.connection.commit()
+
+    # ------ Getter methods ------
+
+    def get_all_rewards(self):
+        """
+        Gets all rewards from the database.
+
+        args:
+            - None
+
+        returns:
+            - A list of all rewards in the database.
+        """
+        self.cursor.execute("SELECT * FROM rewards")
+        return self.cursor.fetchall()
+
+    def get_reward_by_id(self, reward_id: int):
+        """
+        Gets a reward by its ID from the database.
+
+        args:
+            - reward_id: The ID of the reward to get.
+
+        returns:
+            - The reward with the given ID.
+        """
+        self.cursor.execute("SELECT * FROM rewards WHERE reward_id = ?", (reward_id,))
+        return self.cursor.fetchone()
+
+    # ------ Setter methods ------
+
+    def update_reward_name(self, reward_id: int, new_name: str):
+        """
+        Updates the name of a reward in the database.
+
+        args:
+            - reward_id: The ID of the reward to update.
+            - new_name: The new name of the reward.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "UPDATE rewards SET reward_name = ? WHERE reward_id = ?", (new_name, reward_id))
+        self.connection.commit()
+
+    def update_reward_description(self, reward_id: int, new_description: str):
+        """
+        Updates the description of a reward in the database.
+
+        args:
+            - reward_id: The ID of the reward to update.
+            - new_description: The new description of the reward.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "UPDATE rewards SET description = ? WHERE reward_id = ?", (new_description, reward_id))
+        self.connection.commit()
+
+    def update_reward_points_required(self, reward_id: int, new_points_required: int):
+        """
+        Updates the points_required of a reward in the database.
+
+        args:
+            - reward_id: The ID of the reward to update.
+            - new_points_required: The new points_required of the reward.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "UPDATE rewards SET points_required = ? WHERE reward_id = ?", (new_points_required, reward_id))
+        self.connection.commit()
+
+    def update_reward_image_url(self, reward_id: int, new_image_url: str):
+        """
+        Updates the image_url of a reward in the database.
+
+        args:
+            - reward_id: The ID of the reward to update.
+            - new_image_url: The new image_url of the reward.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "UPDATE rewards SET image_url = ? WHERE reward_id = ?", (new_image_url, reward_id))
+        self.connection.commit()
+
+    def delete_reward(self, reward_id: int):
+        """
+        Deletes a reward from the database.
+
+        args:
+            - reward_id: The ID of the reward to delete.
+
+        returns:
+            - None
+        """
+        self.cursor.execute(
+            "DELETE FROM rewards WHERE reward_id = ?", (reward_id,))
+        self.connection.commit()
