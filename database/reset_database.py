@@ -33,13 +33,15 @@ def execute_sql_file(cursor: sqlite3.Cursor, sql_file_path: str) -> None:
         cursor.executescript(sql)
     return None
 
-def create_database(schema_path: str, starting_data_path: str, database_path: str) -> None:
+def create_database(schema_path: str, starting_data_path: str, starting_data_reviews_path: str, starting_data_rewards_path: str, database_path: str) -> None:
     """
     Set the database schema.
     
     args:
         - schema_path: The path to the schema file.
         - starting_data_path: The path to the starting data file.
+        - starting_data_reviews_path: The path to the starting data reviews file.
+        - starting_data_rewards_path: The path to the starting data rewards file.
         - database_path: The path to the database file.
 
     returns:
