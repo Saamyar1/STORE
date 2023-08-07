@@ -17,16 +17,16 @@ INSERT INTO inventory (item_name, info, price, stock, image_url, category)
 VALUES ('ACM', 'AC Milan Jersey', 50.00, 100, 'static/images/acm_jersey.jpeg', 'Sport');
 
 INSERT INTO inventory (item_name, info, price, stock, image_url, category) 
-VALUES ('ACM', 'AC Milan Jersey', 50.00, 100, 'static/images/rma_jersey.jpeg', 'Sport');
+VALUES ('RMA', 'Real Madrid Jersey', 50.00, 100, 'static/images/rma_jersey.jpeg', 'Sport');
 
 INSERT INTO inventory (item_name, info, price, stock, image_url, category) 
-VALUES ('ACM', 'AC Milan Jersey', 50.00, 100, 'static/images/ars_jersey.jpeg', 'Sport');
+VALUES ('ARS', 'Arsenal Jersey', 50.00, 100, 'static/images/ars_jersey.jpeg', 'Sport');
 
 INSERT INTO inventory (item_name, info, price, stock, image_url, category) 
-VALUES ('ACM', 'AC Milan Jersey', 100.00, 100, 'static/images/boot.jpeg', 'Sport');
+VALUES ('Cleats', 'Nike Cleats', 100.00, 100, 'static/images/boot.jpeg', 'Sport');
 
 INSERT INTO inventory (item_name, info, price, stock, image_url, category) 
-VALUES ('ACM', 'AC Milan Jersey', 50.00, 100, 'static/images/nike_guards.jpeg', 'Sport');
+VALUES ('Shin Guards', 'Nike Shin Guards', 50.00, 100, 'static/images/nike_guards.jpeg', 'Sport');
 
 INSERT into `sales` (`transaction_id`, `username`, `item_id`, `quantity`, `sale_date`, `cost`)
 VALUES ('1', 'aturing', '1', 10, '2022-12-21 7:30:30', 5.50);
