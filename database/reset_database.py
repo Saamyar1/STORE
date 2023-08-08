@@ -33,15 +33,13 @@ def execute_sql_file(cursor: sqlite3.Cursor, sql_file_path: str) -> None:
         cursor.executescript(sql)
     return None
 
-def create_database(schema_path: str, starting_data_path: str, starting_data_reviews_path: str, starting_data_rewards_path: str, database_path: str) -> None:
+def create_database(schema_path: str, starting_data_path: str, database_path: str) -> None:
     """
     Set the database schema.
     
     args:
         - schema_path: The path to the schema file.
         - starting_data_path: The path to the starting data file.
-        - starting_data_reviews_path: The path to the starting data reviews file.
-        - starting_data_rewards_path: The path to the starting data rewards file.
         - database_path: The path to the database file.
 
     returns:
@@ -55,8 +53,6 @@ def create_database(schema_path: str, starting_data_path: str, starting_data_rev
     # Builds the database from the schema and starting data.
     execute_sql_file(cursor, schema_path)
     execute_sql_file(cursor, starting_data_path)
-    execute_sql_file(cursor, starting_data_reviews_path) 
-    execute_sql_file(cursor, starting_data_rewards_path)  
 
     # Commits the changes and closes the connection.
     connection.commit()
@@ -69,12 +65,11 @@ def main() -> None:
     database_path = os.path.join(os.path.dirname(__file__), 'store_records.db')
     schema_path = os.path.join(os.path.dirname(__file__), 'schema.sql')
     starting_data_path = os.path.join(os.path.dirname(__file__), 'starting_data.sql')
-    starting_data_reviews_path = os.path.join(os.path.dirname(__file__), 'starting_data_reviews.sql') 
-    starting_data_rewards_path = os.path.join(os.path.dirname(__file__), 'starting_data_rewards.sql')  
+    
 
     # Removes the database file and creates a new one.
     remove_database(database_path)
-    create_database(schema_path, starting_data_path, starting_data_reviews_path, starting_data_rewards_path, database_path)
+    create_database(schema_path, starting_data_path, database_path)
     return None
 
 if __name__ == '__main__':
