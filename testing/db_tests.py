@@ -86,3 +86,67 @@ def test_check_connection_threaded(db: Database = None) -> tuple:
         return False, error
     else:
         return True, "Connection is not single threaded."
+def test_barcelona_info(db: Database = None) -> tuple:
+    """
+    Tests that the database has correct info for barcelona jersey.
+
+    args:
+        - db: an sqlite3 database object (optional)
+
+    returns:
+        - error_report: a tuple containing a boolean and a string, 
+          where the boolean is True if the test passed and False if it failed, 
+          and the string is the error report.
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    expected = "FC Barcelona Jersey"
+    actual = db.get_item_info_by_id(1)["info"]
+    if actual != expected:
+        error = f"Error in test_barcelona_info.\n  - Actual: {actual}"
+        return False, error
+    else:
+        return True, "Info Matches."
+    
+def test_AC_Milan_info(db: Database = None) -> tuple:
+    """
+    Tests that the database has correct info for Ac Mialn jersey.
+
+    args:
+        - db: an sqlite3 database object (optional)
+
+    returns:
+        - error_report: a tuple containing a boolean and a string, 
+          where the boolean is True if the test passed and False if it failed, 
+          and the string is the error report.
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    expected = "AC Milan Jersey"
+    actual = db.get_item_info_by_id(2)["info"]
+    if actual != expected:
+        error = f"Error in test_Ac Milan_info.\n  - Actual: {actual}"
+        return False, error
+    else:
+        return True, "Info Matches."
+def test_Real_Madrid_info(db: Database = None) -> tuple:
+    """
+    Tests that the database has correct info for Real Madrid jersey.
+
+    args:
+        - db: an sqlite3 database object (optional)
+
+    returns:
+        - error_report: a tuple containing a boolean and a string, 
+          where the boolean is True if the test passed and False if it failed, 
+          and the string is the error report.
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    expected = "Real Madrid Jersey"
+    actual = db.get_item_info_by_id(3)["info"]
+    if actual != expected:
+        error = f"Error in test_Real Madrid_info.\n  - Actual: {actual}"
+        return False, error
+    else:
+        return True, "Info Matches."
